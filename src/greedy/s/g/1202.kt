@@ -1,5 +1,6 @@
 package greedy.s.g
 
+
 import java.util.PriorityQueue
 
 fun main() {
@@ -12,7 +13,7 @@ class Solution1202 {
         val pq = PriorityQueue<Pair<Int, Int>>(Comparator { a, b -> if (a.first != b.first) a.first - b.first else b.second - a.second } )
         val pSumQ = PriorityQueue<Int>(Comparator { a , b -> b - a } )
 
-        val bagList = PriorityQueue<Int>()
+        val bagList = ArrayList<Int>(k)
 
         repeat(n) {
             val (w, v) = readln().split(" ").map{ it.toInt() }
@@ -23,11 +24,14 @@ class Solution1202 {
             bagList.add(bag)
         }
 
+        bagList.sort()
+
         var res: Long = 0
         for (bag in bagList) {
             while (pq.isNotEmpty() && pq.peek().first <= bag) {
                 pSumQ.add(pq.poll().second)
             }
+
             if (pSumQ.isNotEmpty()) res += pSumQ.poll()
         }
         println(res)
