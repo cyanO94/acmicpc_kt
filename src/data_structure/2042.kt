@@ -7,10 +7,10 @@ import kotlin.math.log2
 import kotlin.math.pow
 
 fun main() {
-    Sol().solve()
+    Solution2042().solve()
 }
 
-class Sol {
+class Solution2042 {
     val inputList: MutableList<Long> = mutableListOf()
     var segList: MutableList<Long> = mutableListOf()
 
